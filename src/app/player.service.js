@@ -11,7 +11,7 @@ var PlayerService = (function () {
     function PlayerService() {
     }
     PlayerService.prototype.getPlayers = function () {
-        return mock_players_1.PLAYERS;
+        return Promise.resolve(mock_players_1.PLAYERS);
     };
     return PlayerService;
 }());

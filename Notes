@@ -335,15 +335,29 @@ Setup for local development
 	  - (This is when this file is being refrenced.)the component class name should be written in UpperCamel case and always end in the word 'Component'. For example the player detail class will be written as PlayerDetailComponent.
 
 	  
-	  Built in Directives List:
+	 BUILT IN DIRECTIVES LIST:
 	  *ngFor
 	  *ngIf
+	  ngOnInit: Angulars implementation of Interfaces , each interface has a single method.
+	  example: export class AppComponent implements OnInit {
+	
+	  ngOnInit(): void {
+	   }
+     }
 
-	  Binding.
+	  BINDING.
 	  <hero-detail [hero]="selectedHero"></hero-detail> putting the squre brackets to the left of the eqaul signs makes the target property a binding expression.
 
 
-
+	  ASYNC SERVICES AND PROMISES
+	  -A Promise essentially promises to call back when the results are ready. You ask an asynchronous service to do some work and give it a callback function
+	  -data will come from a remote server. When using a remote server, users don't have to wait for the server to respond; additionally, you aren't able to block the UI during the wait
+      -To coordinate the view with the response, you can use Promises, which is an asynchronous technique that changes the signature of the getFoo() method
+	  code example:
+	   getHeroes(): void {
+       this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+      }
+	  -Once you have the promise in the service the method should refrence it in the parent file using it. 
 
 
 
