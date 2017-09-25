@@ -6,9 +6,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+var mock_players_1 = require("./mock-players");
 var PlayerService = (function () {
     function PlayerService() {
     }
+    PlayerService.prototype.getPlayers = function () {
+        return mock_players_1.PLAYERS;
+    };
     return PlayerService;
 }());
 PlayerService = __decorate([

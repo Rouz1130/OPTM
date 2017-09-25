@@ -6,18 +6,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var PLAYERS = [
-    { id: 1, name: 'Steph Curry', position: 'Point-Guard', team: 'GoGojImmie' },
-    { id: 2, name: 'Mike Conley', position: 'Point-Guard', team: 'GoGojImmie' },
-    { id: 3, name: 'Cj Mcolloum', position: 'Shooting-Guard', team: 'GoGojImmie' },
-    { id: 4, name: 'Harrison Barnes', position: 'Forward', team: 'GoGojImmie' },
-    { id: 5, name: 'Joe Engles', position: 'Forward', team: 'GoGojImmie' },
-    { id: 6, name: 'Rudy Gay', position: 'Forward', team: 'GoGojImmie' },
-    { id: 7, name: 'Al Horford', position: 'Forward/Center', team: 'GoGojImmie' },
-    { id: 8, name: 'Rudy Gobert', position: 'Center', team: 'GoGojImmie' },
-    { id: 9, name: 'Devin Booker', position: 'Shooting-Guard', team: 'GoGojImmie' },
-    { id: 10, name: 'LeMarcus Aldridge', position: 'Poing-Guard', team: 'GoGojImmie' }
-];
+var player_1 = require("./player");
+players: player_1.Player[];
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'OPTM Fantasy League';
