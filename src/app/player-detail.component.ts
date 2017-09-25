@@ -13,13 +13,13 @@ import { Player } from './player';
       <div *ngIf="player">
         <h2>{{player.name}} Info</h2>
         <div><label>id: </label>{{player.id}}</div>
-      <div>
-         <label>name: </label>
-         <input> [(ngModel)] ="player.name" placeholder="name"/>
-         <label>positon: </label>
-         <input> [(ngModel)] ="player.position" placeholder="positon"/>
-         <label>team: </label>
-         <input> [(ngModel)] ="player.team" placeholder="team"/>
+       <div>
+        <label>name: </label>
+        <input [(ngModel)]="player.name" placeholder="name"/> 
+        <label>position: </label>
+        <input [(ngModel)]="player.position" placeholder="position"/>
+        <label>team: </label>
+        <input [(ngModel)]="player.team" placeholder="team"/>
       </div>
       </div>
    `
