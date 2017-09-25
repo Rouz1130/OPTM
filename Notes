@@ -330,11 +330,10 @@ Setup for local development
 
 	  src/app/hero-list.component(constructor)
 	  constructor (private service: HeroService) { }
-
-
-
-
-
+	  
+	  Built in Directives List:
+	  *ngFor
+	  *ngIf
 
 
 
