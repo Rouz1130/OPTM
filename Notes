@@ -330,10 +330,17 @@ Setup for local development
 
 	  src/app/hero-list.component(constructor)
 	  constructor (private service: HeroService) { }
+
+	  Component Nameing convention
+	  - (This is when this file is being refrenced.)the component class name should be written in UpperCamel case and always end in the word 'Component'. For example the player detail class will be written as PlayerDetailComponent.
+
 	  
 	  Built in Directives List:
 	  *ngFor
 	  *ngIf
+
+	  Binding.
+	  <hero-detail [hero]="selectedHero"></hero-detail> putting the squre brackets to the left of the eqaul signs makes the target property a binding expression.
 
 
 

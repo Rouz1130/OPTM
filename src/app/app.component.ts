@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
+import { Player } from './player';
 
-export class Player {
-    id: number;
-    name: string;
-    position: string;
-    team: string;
-}
 
 const PLAYERS: Player[] = [
     { id: 1, name: 'Steph Curry', position: 'Point-Guard', team:'GoGojImmie' },
@@ -32,18 +27,8 @@ const PLAYERS: Player[] = [
         <span class="badge">{{player.id}}</span> {{player.name}}
       </li>
     </ul>
-    <div *ngIf="selectedPlayer">
-      <h2>{{selectedPlayer.name}} info</h2>
-      <div><label>id: </label>{{selectedPlayer.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedPlayer.name" placeholder="name"/> 
-        <label>position: </label>
-        <input [(ngModel)]="selectedPlayer.position" placeholder="position"/>
-        <label>team: </label>
-        <input [(ngModel)]="selectedPlayer.team" placeholder="team"/>
-      </div>
-    </div>
+    <player-detail [player] = "selectedPlayer"><player-detail>
+
   `,
     styles: [`
     .selected {
