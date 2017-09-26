@@ -31,12 +31,18 @@ var PlayerDetailComponent = (function () {
     PlayerDetailComponent.prototype.goBack = function () {
         this.location.back();
     };
+    PlayerDetailComponent.prototype.save = function () {
+        var _this = this;
+        this.playerService.update(this.player)
+            .then(function () { return _this.goBack(); });
+    };
     return PlayerDetailComponent;
 }());
 PlayerDetailComponent = __decorate([
     core_1.Component({
         selector: './player-detail',
-        template: './player-detail.component.html',
+        templateUrl: './player-detail.component.html',
+        styleUrls: ['./player-detail.component.css']
     }),
     __metadata("design:paramtypes", [player_service_1.PlayerService,
         router_1.ActivatedRoute,

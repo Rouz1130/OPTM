@@ -8,12 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
+var http_1 = require("@angular/http");
+var app_routing_module_1 = require("./app-routing.module");
+var angular_in_memory_web_api_1 = require("angular-in-memory-web-api");
+var in_memory_data_service_1 = require("./in-memory-data.service");
 var app_component_1 = require("./app.component");
 var player_detail_component_1 = require("./player-detail.component");
 var player_service_1 = require("./player.service");
 var players_component_1 = require("./players.component");
 var dashboard_component_1 = require("./dashboard.component");
-var app_routing_module_1 = require("./app-routing.module");
+var player_search_component_1 = require("./player-search.component");
 // Path: the router matches the path to the URL in the browser address bar (players)
 // Component: The component that the router should create when navigating to this route.(playerComponent)
 var AppModule = (function () {
@@ -26,18 +30,19 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
-            app_routing_module_1.AppRoutingModule
+            app_routing_module_1.AppRoutingModule,
+            http_1.HttpModule,
+            angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService)
         ],
         //general, the declarations array contains a list of application components, pipes, and directives that belong to the module. A component must be declared in a module before other components can reference it
         declarations: [
             app_component_1.AppComponent,
             player_detail_component_1.PlayerDetailComponent,
             players_component_1.PlayersComponent,
-            dashboard_component_1.DashboardComponent
+            dashboard_component_1.DashboardComponent,
+            player_search_component_1.PlayerSearchComponent
         ],
-        providers: [
-            player_service_1.PlayerService
-        ],
+        providers: [player_service_1.PlayerService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

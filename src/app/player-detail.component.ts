@@ -16,7 +16,8 @@ import { PlayerService } from './player.service';
 // Player-detail will match the element tag that identifies this component whithin a parent component template.(Parent is AppComponent: child: player-detail component)
 @Component({
     selector: './player-detail',
-    template:'./player-detail.component.html',
+    templateUrl: './player-detail.component.html',
+    styleUrls: ['./player-detail.component.css']
 })
 
 
@@ -40,5 +41,10 @@ export class PlayerDetailComponent implements OnInit {
 
     goBack(): void {
         this.location.back();
+    }
+
+    save(): void {
+        this.playerService.update(this.player)
+            .then(() => this.goBack());
     }
 }

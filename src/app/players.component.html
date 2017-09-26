@@ -1,10 +1,19 @@
-﻿<h2>My Players</h2>
+<h2>My Players</h2>
+<div>
+  <label>Player name:</label> <input #playerName />
+  <button (click)="add(playerName.value); playerName.value=''">
+    Add
+  </button>
+</div>
 <ul class="players">
     <li *ngFor="let player of players"
         [class.selected]="player === selectedPlayer"
         (click)="onSelect(player)">
-        <span class="badge">{{player.id}}</span> {{player.name}}
-    </li>
+        <span class="badge">{{player.id}}</span>
+        <span>{{player.name}}</span>
+        <button class="delete"
+         (click)="delete(player); $event.stopPropagation()">X</button>
+</li>
 </ul>
 <div *ngIf="selectedPlayer">
     <h2>

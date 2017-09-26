@@ -1,4 +1,4 @@
-﻿label {
+label {
     display: inline-block;
     width: 3em;
     margin: .5em 0;
@@ -21,7 +21,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     cursor: hand;
-}
+}c
 
     button:hover {
         background-color: #cfd8dc;

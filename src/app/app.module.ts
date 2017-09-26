@@ -1,15 +1,20 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http'
+import { AppRoutingModule } from './app-routing.module';
 
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service'
 
 import { AppComponent } from './app.component';
 import { PlayerDetailComponent } from './player-detail.component';
 import { PlayerService } from './player.service';
 import { PlayersComponent } from './players.component';
 import { DashboardComponent } from './dashboard.component';
+import {PlayerSearchComponent} from './player-search.component'
 
-import { AppRoutingModule } from './app-routing.module';
+
 
 
 // Path: the router matches the path to the URL in the browser address bar (players)
@@ -20,7 +25,9 @@ import { AppRoutingModule } from './app-routing.module';
 
         BrowserModule,
         FormsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        HttpModule,
+        InMemoryWebApiModule.forRoot(InMemoryDataService)
 
     ],
 
@@ -29,12 +36,10 @@ import { AppRoutingModule } from './app-routing.module';
         AppComponent,
         PlayerDetailComponent,
         PlayersComponent,
-        DashboardComponent
+        DashboardComponent,
+        PlayerSearchComponent
     ],
-    providers: [
-        PlayerService
-
-    ],
+    providers: [PlayerService],
 
     bootstrap: [AppComponent]
 

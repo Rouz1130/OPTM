@@ -29,12 +29,35 @@ var PlayersComponent = (function () {
     PlayersComponent.prototype.gotoDetail = function () {
         this.router.navigate(['/detail', this.selectedPlayer.id]);
     };
+    PlayersComponent.prototype.add = function (name) {
+        var _this = this;
+        name = name.trim();
+        if (!name) {
+            return;
+        }
+        this.playerService.create(name)
+            .then(function (player) {
+            _this.players.push(player);
+            _this.selectedPlayer = null;
+        });
+    };
+    PlayersComponent.prototype.delete = function (player) {
+        var _this = this;
+        this.playerService
+            .delete(player.id)
+            .then(function () {
+            _this.players = _this.players.filter(function (h) { return h !== player; });
+            if (_this.selectedPlayer === player) {
+                _this.selectedPlayer = null;
+            }
+        });
+    };
     return PlayersComponent;
 }());
 PlayersComponent = __decorate([
     core_1.Component({
         selector: 'my-players',
-        template: './players.component.html',
+        templateUrl: './players.component.html',
         styleUrls: ['./players.component.css']
     }),
     __metadata("design:paramtypes", [router_1.Router,
