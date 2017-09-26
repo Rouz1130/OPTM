@@ -13,6 +13,17 @@ var PlayerService = (function () {
     PlayerService.prototype.getPlayers = function () {
         return Promise.resolve(mock_players_1.PLAYERS);
     };
+    PlayerService.prototype.getPlayersSlowly = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            // Simulate server latency with 2 second delay
+            setTimeout(function () { return resolve(_this.getPlayers()); }, 2000);
+        });
+    };
+    PlayerService.prototype.getPlayer = function (id) {
+        return this.getPlayers()
+            .then(function (players) { return players.find(function (player) { return player.id === id; }); });
+    };
     return PlayerService;
 }());
 PlayerService = __decorate([

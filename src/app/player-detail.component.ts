@@ -1,6 +1,13 @@
-﻿import { Component, Input } from '@angular/core';
+import 'rxjs/add/operator/switchMap';
+import { Component, OnInit } from '@angular/core';
 
 import { Player } from './player';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { PlayerService } from './player.service';
+
+
 
 
 
@@ -8,26 +15,30 @@ import { Player } from './player';
 // @Component decorator provieds Angular metadat for the component. 
 // Player-detail will match the element tag that identifies this component whithin a parent component template.(Parent is AppComponent: child: player-detail component)
 @Component({
-    selector: 'player-detail',
-    template: `
-      <div *ngIf="player">
-        <h2>{{player.name}} Info</h2>
-        <div><label>id: </label>{{player.id}}</div>
-       <div>
-        <label>name: </label>
-        <input [(ngModel)]="player.name" placeholder="name"/> 
-        <label>position: </label>
-        <input [(ngModel)]="player.position" placeholder="position"/>
-        <label>team: </label>
-        <input [(ngModel)]="player.team" placeholder="team"/>
-      </div>
-      </div>
-   `
+    selector: './player-detail',
+    template:'./player-detail.component.html',
 })
 
 
  // always export the component class because you will always import it elsewhere.
-export class PlayerDetailComponent {
-    @Input() player: Player;
+   
+export class PlayerDetailComponent implements OnInit {
+    player: Player;
 
+    constructor(
+        private playerService: PlayerService,
+        private route: ActivatedRoute,
+        private location: Location,
+    ) { }
+
+    ngOnInit(): void {
+        this.route.paramMap
+            .switchMap((params: ParamMap) => this.playerService.getPlayer(+params.get('id')))
+            .subscribe(player => this.player = player);
+    }
+
+
+    goBack(): void {
+        this.location.back();
+    }
 }

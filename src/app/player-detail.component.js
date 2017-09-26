@@ -8,26 +8,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+require("rxjs/add/operator/switchMap");
 var core_1 = require("@angular/core");
-var player_1 = require("./player");
+var router_1 = require("@angular/router");
+var common_1 = require("@angular/common");
+var player_service_1 = require("./player.service");
 // To define the component you always import the Component symbol.
 // @Component decorator provieds Angular metadat for the component. 
 // Player-detail will match the element tag that identifies this component whithin a parent component template.(Parent is AppComponent: child: player-detail component)
 var PlayerDetailComponent = (function () {
-    // always export the component class because you will always import it elsewhere.
-    function PlayerDetailComponent() {
+    function PlayerDetailComponent(playerService, route, location) {
+        this.playerService = playerService;
+        this.route = route;
+        this.location = location;
     }
+    PlayerDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.paramMap
+            .switchMap(function (params) { return _this.playerService.getPlayer(+params.get('id')); })
+            .subscribe(function (player) { return _this.player = player; });
+    };
+    PlayerDetailComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     return PlayerDetailComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", player_1.Player)
-], PlayerDetailComponent.prototype, "player", void 0);
 PlayerDetailComponent = __decorate([
     core_1.Component({
-        selector: 'player-detail',
-        template: "\n      <div *ngIf=\"player\">\n        <h2>{{player.name}} Info</h2>\n        <div><label>id: </label>{{player.id}}</div>\n       <div>\n        <label>name: </label>\n        <input [(ngModel)]=\"player.name\" placeholder=\"name\"/> \n        <label>position: </label>\n        <input [(ngModel)]=\"player.position\" placeholder=\"position\"/>\n        <label>team: </label>\n        <input [(ngModel)]=\"player.team\" placeholder=\"team\"/>\n      </div>\n      </div>\n   "
-    })
+        selector: './player-detail',
+        template: './player-detail.component.html',
+    }),
+    __metadata("design:paramtypes", [player_service_1.PlayerService,
+        router_1.ActivatedRoute,
+        common_1.Location])
 ], PlayerDetailComponent);
 exports.PlayerDetailComponent = PlayerDetailComponent;
 //# sourceMappingURL=player-detail.component.js.map
